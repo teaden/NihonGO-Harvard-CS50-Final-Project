@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+
+    <h2>Welcome! いらっしゃいませ！</h2>
+    Please select a language for your translation. You may enter text manually or upload a text file.
+    <div>翻訳の言語を選択してください。手動でテキストを入力するか、テキストファイルをアップロードしてください。</div>
+    <br>
+    Please input English text using proper spacing for maximum accuracy. Please use kanji when typing Japanese.
+    <div>適切な漢字を使って日本語のテキストを入力してください。</div>
+    <br>
+    <div class="col">
+        <form action="/" method="post">
+            <div class="form-group">
+                <div class="form-check-inline">
+                    <label class="form-check-label" for="stringchoice">
+                        <input type="radio" class="form-check-input" id="JPchoice" name="language" value="JPchoice" checked>English to Japanese
+                    </label>
+                </div>
+                <div class="form-check-inline">
+                    <label class="form-check-label" for="filechoice">
+                        <input type="radio" class="form-check-input" id="ENchoice" name="language" value="ENchoice">Japanese to English
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-check-inline">
+                    <label class="form-check-label" for="stringchoice">
+                        <input type="radio" class="form-check-input" id="stringchoice" name="choice" value="stringchoice" checked>String
+                    </label>
+                </div>
+                <div class="form-check-inline">
+                    <label class="form-check-label" for="filechoice">
+                        <input type="radio" class="form-check-input" id="filechoice" name="choice" value="filechoice">File
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <input name="input_file" id="fileupload" type="file">
+            </div>
+            <div class="form-group">
+                    <textarea rows="4" cols="50" name="input_text" class="form-control" id="input_text" placeholder="Enter Text Here"></textarea>
+                </div>
+            <div class="form-group">
+                <!-- http://getbootstrap.com/docs/4.1/components/buttons/ -->
+                <button class="btn btn-primary" type="submit">Translate</button>
+            </div>
+        </form>
+    </div>
+    
+    <!-- https://stackoverflow.com/questions/20094634/jquery-hide-show-div-with-radio-button-control -->
+    <!-- https://learn.jquery.com/using-jquery-core/document-ready/ -->
+    <script>
+    
+    $(document).ready(function() {
+        $('#fileupload').hide();
+    });
+    
+    $('[name="choice"]').change(function () {
+        if ($('[name="choice"]:checked').val() === "stringchoice") {
+            $('#input_text').show();
+            $('#fileupload').hide();
+        } else {
+            $('#fileupload').show();
+            $('#input_text').hide();
+        }
+    });
+        
+    </script>
+
+{% endblock %}

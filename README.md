@@ -1,4 +1,4 @@
-# NihonGO-Harvard-CS50-Final-Project
+# NihonGO!
 Web Application with Rudimentary Translation Functionality Between Japanese and English
 
 NihonGO is a web application made with Flask. The application takes an inputted string, splits the string into individual 
